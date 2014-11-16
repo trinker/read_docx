@@ -1,4 +1,7 @@
-A function develope by [Bryan Goodrich](https://www.linkedin.com/in/bryangoodrich) for reading .docx files into R:
+A function developed by [Bryan Goodrich](https://www.linkedin.com/in/bryangoodrich) for reading .docx files into R:
+
+
+
 
 **The Code**
 
@@ -6,8 +9,7 @@ A function develope by [Bryan Goodrich](https://www.linkedin.com/in/bryangoodric
 ```r
 read_docx <- function (file, skip = 0) {
     tmp <- tempfile()
-    if (!dir.create(tmp)) 
-        stop("Temporary directory could not be established.")
+    if (!dir.create(tmp)) stop("Temporary directory could not be established.")
     unzip(file, exdir = tmp)
     xmlfile <- file.path(tmp, "word", "document.xml")
     doc <- XML::xmlTreeParse(xmlfile, useInternalNodes = TRUE)

@@ -201,14 +201,13 @@ hr {
 </head>
 
 <body>
-<p>A function develope by <a href="https://www.linkedin.com/in/bryangoodrich">Bryan Goodrich</a> for reading .docx files into R:</p>
+<p>A function developed by <a href="https://www.linkedin.com/in/bryangoodrich">Bryan Goodrich</a> for reading .docx files into R:</p>
 
 <p><strong>The Code</strong></p>
 
 <pre><code class="r">read_docx &lt;- function (file, skip = 0) {
     tmp &lt;- tempfile()
-    if (!dir.create(tmp)) 
-        stop(&quot;Temporary directory could not be established.&quot;)
+    if (!dir.create(tmp)) stop(&quot;Temporary directory could not be established.&quot;)
     unzip(file, exdir = tmp)
     xmlfile &lt;- file.path(tmp, &quot;word&quot;, &quot;document.xml&quot;)
     doc &lt;- XML::xmlTreeParse(xmlfile, useInternalNodes = TRUE)
